@@ -19,6 +19,14 @@ export default defineNuxtConfig({
     'v-gsap-nuxt',
   ],
   css: ['~/assets/css/tailwind.css'],
+  runtimeConfig: {
+    logto: {
+      endpoint: 'https://logto.aplix.nl/',
+      appId: '7e3mstcqvziu14bnpuvkt',
+      appSecret: 'BAHweu7xoWitIj92cWAiTCIo1i57tgDe',
+      cookieEncryptionKey: 'nwTUR4Ybsqhouq00v6WksEEAkUD1YYng', // Random-generated
+    },
+  },
   colorMode: {
     classSuffix: ''
   },
@@ -41,5 +49,12 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './components/ui'
+  },
+  logto: {
+    pathnames: {
+      signIn: '/auth/login',
+      signOut: '/auth/logout',
+      callback: '/auth/callback',
+    },
   },
 })
