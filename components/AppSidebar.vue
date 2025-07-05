@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { GalleryVerticalEnd } from "lucide-vue-next";
 
-const props = defineProps<SidebarProps>();
-
 // This is sample data.
 const data = {
   navMain: [
@@ -146,7 +144,7 @@ const data = {
 </script>
 
 <template>
-  <Sidebar v-bind="props">
+  <Sidebar>
     <SidebarHeader>
       <SidebarMenu>
         <SidebarMenuItem>
