@@ -36,6 +36,10 @@
     "zod": "^3.25.74"
   },
   "devDependencies": {
+    "@iconify-json/radix-icons": "^1.2.2",
+    "@iconify/vue": "^5.0.0",
+    "@nuxtjs/color-mode": "^3.5.2",
+    "@tailvue/nuxt": "^1.0.0",
     "typescript": "^5.8.3"
   }
 }

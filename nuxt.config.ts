@@ -9,8 +9,13 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/eslint',
     'shadcn-nuxt',
+    '@nuxtjs/color-mode',
+    '@tailvue/nuxt',
   ],
   css: ['~/assets/css/tailwind.css'],
+  colorMode: {
+    classSuffix: ''
+  },
   vite: {
     plugins: [
       tailwindcss(),
@@ -26,5 +31,5 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './components/ui'
-  }
+  },
 })
