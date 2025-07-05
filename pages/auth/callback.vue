@@ -1,7 +1,3 @@
-<script lang="ts">
-export const description = "A login page with form and image.";
-</script>
-
 <template>
   <div
     class="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10"
