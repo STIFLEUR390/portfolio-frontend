@@ -11,10 +11,20 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/color-mode',
     '@tailvue/nuxt',
+    'nuxt-bezier',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
+    '@pinia/colada-nuxt',
+    '@tresjs/nuxt',
+    'v-gsap-nuxt',
   ],
   css: ['~/assets/css/tailwind.css'],
   colorMode: {
     classSuffix: ''
+  },
+  nuxtBezier: {
+    prefix: 'Prefix',
+    components: ['FadeTransition']
   },
   vite: {
     plugins: [

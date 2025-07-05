@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
+@import '@noction/vue-bezier/styles';
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
