@@ -1,6 +1,6 @@
 <template>
   <div
-    class="font-sans antialiased bg-gray-50 dark:bg-gray-900 bg-transparent transition-colors duration-300"
+    class="font-sans antialiased bg-transparent transition-colors duration-300"
   >
     <!-- Canvas Three.js -->
     <ThreeJSBackgroundComponent />

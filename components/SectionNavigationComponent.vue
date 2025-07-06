@@ -54,7 +54,7 @@ onMounted(() => {
       :style="{ transform: `scFranck Herold(${scrollProgress})` }"
     ></div>
     <nav
-      class="fixed w-full top-0 z-40 bg-white/90 dark:bg-gray-900/90 bg-transparent backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20 transition-all duration-300"
+      class="fixed w-full top-0 z-40 bg-transparent backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20 transition-all duration-300"
       :class="{ 'shadow-lg bg-white/95 dark:bg-gray-900/95': scrolled }"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
