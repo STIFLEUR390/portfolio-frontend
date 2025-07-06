@@ -1,141 +1,51 @@
 <script setup lang="ts">
-import { GalleryVerticalEnd } from "lucide-vue-next";
+import type { SidebarProps } from "@/components/ui/sidebar";
+import { useLogtoUser } from "#imports";
 
+import {
+  BookOpen,
+  Bot,
+  Frame,
+  GalleryVerticalEnd,
+  Map,
+  PieChart,
+  Settings2,
+  SquareTerminal,
+} from "lucide-vue-next";
+
+const props = withDefaults(defineProps<SidebarProps>(), {
+  collapsible: "icon",
+});
+
+const user = useLogtoUser();
 // This is sample data.
 const data = {
+  user: {
+    name: user?.username || "User",
+    email: user?.email || "user@example.com",
+    avatar: user?.avatar || "/avatars/shadcn.jpg",
+  },
+  teams: [
+    {
+      name: "Portfolio",
+      logo: GalleryVerticalEnd,
+      plan: "Pro",
+    },
+  ],
   navMain: [
     {
-      title: "Getting Started",
+      title: "Profile",
       url: "#",
+      icon: SquareTerminal,
+      isActive: true,
       items: [
         {
-          title: "Installation",
-          url: "#",
+          title: "Tableau de bord",
+          url: "/admin",
         },
         {
-          title: "Project Structure",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Building Your Application",
-      url: "#",
-      items: [
-        {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API Reference",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
+          title: "Profile",
+          url: "/admin/profile",
         },
       ],
     },
@@ -144,49 +54,16 @@ const data = {
 </script>
 
 <template>
-  <Sidebar>
+  <Sidebar v-bind="props">
     <SidebarHeader>
-      <SidebarMenu>
-        <SidebarMenuItem>
-          <SidebarMenuButton size="lg" as-child>
-            <a href="#">
-              <div
-                class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-              >
-                <GalleryVerticalEnd class="size-4" />
-              </div>
-              <div class="flex flex-col gap-0.5 leading-none">
-                <span class="font-medium">Documentation</span>
-                <span class="">v1.0.0</span>
-              </div>
-            </a>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      </SidebarMenu>
+      <TeamSwitcher :teams="data.teams" />
     </SidebarHeader>
     <SidebarContent>
-      <SidebarGroup>
-        <SidebarMenu>
-          <SidebarMenuItem v-for="item in data.navMain" :key="item.title">
-            <SidebarMenuButton as-child>
-              <a :href="item.url" class="font-medium">
-                {{ item.title }}
-              </a>
-            </SidebarMenuButton>
-            <SidebarMenuSub v-if="item.items.length">
-              <SidebarMenuSubItem
-                v-for="childItem in item.items"
-                :key="childItem.title"
-              >
-                <SidebarMenuSubButton as-child :is-active="childItem.isActive">
-                  <a :href="childItem.url">{{ childItem.title }}</a>
-                </SidebarMenuSubButton>
-              </SidebarMenuSubItem>
-            </SidebarMenuSub>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarGroup>
+      <NavMain :items="data.navMain" />
     </SidebarContent>
+    <SidebarFooter>
+      <NavUser :user="data.user" />
+    </SidebarFooter>
     <SidebarRail />
   </Sidebar>
 </template>

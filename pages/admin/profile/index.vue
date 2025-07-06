@@ -18,7 +18,7 @@ definePageMeta({
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem class="hidden md:block">
-              <BreadcrumbLink href="#"> Tableau de bord </BreadcrumbLink>
+              <BreadcrumbLink href="#"> Profile </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>

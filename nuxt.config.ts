@@ -1,11 +1,10 @@
 import tailwindcss from '@tailwindcss/vite'
+import { UserScope } from '@logto/nuxt';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-
-  css: ['~/assets/css/tailwind.css'],
   modules: [
     '@nuxt/image',
     '@nuxt/ui',
@@ -67,6 +66,8 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   logto: {
+    scopes: [UserScope.Email, UserScope.CustomData],
+    fetchUserInfo: true,
     pathnames: {
       signIn: '/auth/login',
       signOut: '/auth/logout',
