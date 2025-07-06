@@ -86,8 +86,8 @@
     </footer>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 useHead({
   title: "Portfolio | Franck Herold Tamto Tamko",
   titleTemplate: "%s",

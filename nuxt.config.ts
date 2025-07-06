@@ -17,14 +17,26 @@ export default defineNuxtConfig({
     '@pinia/colada-nuxt',
     '@tresjs/nuxt',
     'v-gsap-nuxt',
+    '@sentry/nuxt/module',
+    'nuxt-meilisearch',
+    '@formkit/auto-animate/nuxt',
   ],
-  css: ['~/assets/css/tailwind.css'],
   runtimeConfig: {
     logto: {
       endpoint: 'https://logto.aplix.nl/',
       appId: '7e3mstcqvziu14bnpuvkt',
       appSecret: 'BAHweu7xoWitIj92cWAiTCIo1i57tgDe',
       cookieEncryptionKey: 'nwTUR4Ybsqhouq00v6WksEEAkUD1YYng', // Random-generated
+    },
+    awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID || '6ftSaKAGuhniH8GXNwxj',
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'rqMV8BScb4lO3f236Fx96gjUEOCW9RnFTwzRnobh',
+    awsDefaultRegion: process.env.AWS_DEFAULT_REGION || 'eu-west-3',
+    awsBucket: process.env.AWS_BUCKET || 'portfolio',
+    awsEndpoint: process.env.AWS_ENDPOINT || 'https://storage.aplix.nl',
+    public: {
+      apiUrl: process.env.API_URL,
+      awsUrl: process.env.AWS_URL || 'https://storage.aplix.nl/portfolio',
+      awsUsePathStyleEndpoint: process.env.AWS_USE_PATH_STYLE_ENDPOINT || 'true',
     },
   },
   colorMode: {
@@ -56,5 +68,32 @@ export default defineNuxtConfig({
       signOut: '/auth/logout',
       callback: '/auth/callback',
     },
+  },
+
+  tres: {
+    devtools: true,
+  },
+
+  vgsap: {
+    presets: [],
+    breakpoint: 768,
+    scroller: '',
+    composable: true
+  },
+
+  sentry: {
+    sourceMapsUploadOptions: {
+      org: 'aplix',
+      project: 'nuxt-portfolio',
+      url: process.env.SENTRY_URL || 'https://glitchtip-ywgws00kck80ggsgcoksk4s0.applix.fr/',
+    },
+  },
+
+  meilisearch: {
+    hostUrl: process.env.MEILISEARCH_HOST_URL || 'http://localhost:7700',
+    searchApiKey: process.env.MEILISEARCH_SEARCH_API_KEY || 'qAUVtvxRfFEme3Oi0gPlvpAmIp14p0qCdkCuCjYsKi4',
+    adminApiKey: process.env.MEILISEARCH_ADMIN_API_KEY || 'qAUVtvxRfFEme3Oi0gPlvpAmIp14p0qCdkCuCjYsKi4',
+    instantSearch: true,
+    serverSideUsage: false
   },
 })

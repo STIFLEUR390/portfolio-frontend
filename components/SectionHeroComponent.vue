@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <div class="pt-24 sm:pt-32">
     <div class="text-center z-10 max-w-4xl mx-auto px-4">
