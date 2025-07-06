@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
+
+  css: ['~/assets/css/tailwind.css'],
   modules: [
     '@nuxt/image',
     '@nuxt/ui',
@@ -21,6 +23,7 @@ export default defineNuxtConfig({
     '@sentry/nuxt/module',
     'nuxt-meilisearch',
     '@formkit/auto-animate/nuxt',
+    '@logto/nuxt',
   ],
   runtimeConfig: {
     logto: {
