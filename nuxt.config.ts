@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxt/image',
+    '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxt/eslint',
     'shadcn-nuxt',
