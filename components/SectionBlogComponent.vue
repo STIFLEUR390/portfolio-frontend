@@ -1,4 +1,34 @@
 <script setup lang="ts">
+const articles = [
+  {
+    title: "Automatiser vos workflows avec n8n et Flowaise IA",
+    date: "28 Juin 2025",
+    category: "Automatisation",
+    content: `Un guide étape par étape pour connecter vos outils, automatiser vos tâches et intégrer l'IA dans vos processus métiers.\n\nDétail complet de l'article, explications, exemples, etc.`,
+  },
+  {
+    title: "Créer une API REST sécurisée avec Laravel et Vue.js",
+    date: "15 Juin 2025",
+    category: "API & Backend",
+    content: `Les bonnes pratiques pour concevoir, documenter et sécuriser une API performante, avec exemples concrets.\n\nDétail complet de l'article, explications, exemples, etc.`,
+  },
+  {
+    title: "Concevoir des interfaces modernes avec Tailwind CSS & Shadcn",
+    date: "2 Juin 2025",
+    category: "UI/UX Design",
+    content: `Astuces et exemples pour créer des interfaces élégantes, accessibles et responsives, adaptées à tous les écrans.\n\nDétail complet de l'article, explications, exemples, etc.`,
+  },
+];
+
+const showModal = ref(false);
+const currentIdx = ref(0);
+
+function openModal(idx) {
+  currentIdx.value = idx;
+  showModal.value = true;
+}
+
+const currentArticle = computed(() => articles[currentIdx.value] || {});
 </script>
 
 <template>
@@ -18,104 +48,66 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Article 1 -->
       <article
+        v-for="(article, idx) in articles"
+        :key="article.title"
         class="blog-card bg-gray-50 dark:bg-gray-700 rounded-2xl overflow-hidden"
       >
         <div
-          class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center"
+          :class="[
+            'h-48 flex items-center justify-center',
+            idx === 0
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600'
+              : idx === 1
+              ? 'bg-gradient-to-r from-green-500 to-teal-600'
+              : 'bg-gradient-to-r from-purple-500 to-pink-600',
+          ]"
         >
           <FontAwesomeIconComponent
-            icon="fa-solid-bolt"
+            :icon="
+              idx === 0
+                ? 'fa-solid-bolt'
+                : idx === 1
+                ? 'fa-solid-code-branch'
+                : 'fa-solid-palette'
+            "
             class="text-white text-4xl"
           />
         </div>
         <div class="p-6">
-          <span class="text-sm text-primary-600 font-medium"
-            >Automatisation</span
+          <span
+            :class="[
+              'text-sm font-medium',
+              idx === 0
+                ? 'text-primary-600'
+                : idx === 1
+                ? 'text-green-600'
+                : 'text-purple-600',
+            ]"
+            >{{ article.category }}</span
           >
           <h3
             class="text-xl font-semibold text-gray-900 dark:text-white mt-2 mb-3"
           >
-            Automatiser vos workflows avec n8n et Flowaise IA
+            {{ article.title }}
           </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Un guide étape par étape pour connecter vos outils, automatiser vos
-            tâches et intégrer l'IA dans vos processus métiers.
+            {{ article.content.split("\n")[0] }}
           </p>
           <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">28 Juin 2025</span>
+            <span class="text-sm text-gray-500">{{ article.date }}</span>
             <a
               href="#"
               class="text-primary-600 hover:text-primary-800 font-medium"
-              >Lire le tutoriel</a
+              @click.prevent="openModal(idx)"
             >
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 2 -->
-      <article
-        class="blog-card bg-gray-50 dark:bg-gray-700 rounded-2xl overflow-hidden"
-      >
-        <div
-          class="h-48 bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center"
-        >
-          <FontAwesomeIconComponent
-            icon="fa-solid-code-branch"
-            class="text-white text-4xl"
-          />
-        </div>
-        <div class="p-6">
-          <span class="text-sm text-green-600 font-medium">API & Backend</span>
-          <h3
-            class="text-xl font-semibold text-gray-900 dark:text-white mt-2 mb-3"
-          >
-            Créer une API REST sécurisée avec Laravel et Vue.js
-          </h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Les bonnes pratiques pour concevoir, documenter et sécuriser une API
-            performante, avec exemples concrets.
-          </p>
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">15 Juin 2025</span>
-            <a
-              href="#"
-              class="text-primary-600 hover:text-primary-800 font-medium"
-              >Lire l'article</a
-            >
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 3 -->
-      <article
-        class="blog-card bg-gray-50 dark:bg-gray-700 rounded-2xl overflow-hidden"
-      >
-        <div
-          class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center"
-        >
-          <FontAwesomeIconComponent
-            icon="fa-solid-palette"
-            class="text-white text-4xl"
-          />
-        </div>
-        <div class="p-6">
-          <span class="text-sm text-purple-600 font-medium">UI/UX Design</span>
-          <h3
-            class="text-xl font-semibold text-gray-900 dark:text-white mt-2 mb-3"
-          >
-            Concevoir des interfaces modernes avec Tailwind CSS & Shadcn
-          </h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Astuces et exemples pour créer des interfaces élégantes, accessibles
-            et responsives, adaptées à tous les écrans.
-          </p>
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-500">2 Juin 2025</span>
-            <a
-              href="#"
-              class="text-primary-600 hover:text-primary-800 font-medium"
-              >Lire le guide</a
-            >
+              {{
+                idx === 0
+                  ? "Lire le tutoriel"
+                  : idx === 1
+                  ? "Lire l'article"
+                  : "Lire le guide"
+              }}
+            </a>
           </div>
         </div>
       </article>
@@ -126,8 +118,22 @@
         href="#"
         class="cta-button bg-primary-600 text-white px-8 py-4 rounded-full font-semibold"
       >
-        Voir tous les articles
+        Voir plus d'articles
       </a>
     </div>
+
+    <!-- Modal Nuxt UI -->
+    <UModal
+      :dismissible="false"
+      v-model:open="showModal"
+      :title="currentArticle.title"
+    >
+      <template #body>
+        <div class="mb-2 text-sm text-gray-500">{{ currentArticle.date }}</div>
+        <div class="whitespace-pre-line text-gray-700 dark:text-gray-300">
+          {{ currentArticle.content }}
+        </div>
+      </template>
+    </UModal>
   </div>
 </template>

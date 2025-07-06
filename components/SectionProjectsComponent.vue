@@ -152,9 +152,6 @@ const openModal = (idx) => {
   currentIdx.value = idx;
   showModal.value = true;
 };
-const closeModal = () => {
-  showModal.value = false;
-};
 
 const currentProject = computed(() => projects.value[currentIdx.value] || {});
 </script>
@@ -229,48 +226,36 @@ const currentProject = computed(() => projects.value[currentIdx.value] || {});
         href="#contact"
         class="cta-button bg-primary-600 text-white px-8 py-4 rounded-full font-semibold"
       >
-        Voir tous mes projets
+        Voir plus de projets
       </a>
     </div>
 
-    <!-- Modals via Teleport -->
-    <teleport to="body">
-      <div
-        v-if="showModal"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
-      >
-        <div
-          class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-lg w-full relative"
-        >
-          <button
-            @click="closeModal"
-            class="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
+    <!-- Modal Nuxt UI -->
+    <UModal
+      :dismissible="false"
+      v-model:open="showModal"
+      :title="currentProject.title"
+    >
+      <template #body>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">
+          {{ currentProject.long }}
+        </p>
+        <div v-if="currentProject.demo" class="mb-4">
+          <a
+            :href="currentProject.demo"
+            target="_blank"
+            class="text-primary-600 hover:underline"
+            >Voir la démo</a
           >
-            <FontAwesomeIconComponent icon="fa-solid-xmark" />
-          </button>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-            {{ currentProject.title }}
-          </h3>
-          <p class="mb-4 text-gray-700 dark:text-gray-300">
-            {{ currentProject.long }}
-          </p>
-          <div v-if="currentProject.demo" class="mb-4">
-            <a
-              :href="currentProject.demo"
-              target="_blank"
-              class="text-primary-600 hover:underline"
-              >Voir la démo</a
-            >
-          </div>
-          <div v-if="currentProject.video" class="mb-4">
-            <video
-              controls
-              :src="currentProject.video"
-              class="w-full rounded"
-            ></video>
-          </div>
         </div>
-      </div>
-    </teleport>
+        <div v-if="currentProject.video" class="mb-4">
+          <video
+            controls
+            :src="currentProject.video"
+            class="w-full rounded"
+          ></video>
+        </div>
+      </template>
+    </UModal>
   </div>
 </template>
