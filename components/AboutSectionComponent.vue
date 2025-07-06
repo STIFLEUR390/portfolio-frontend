@@ -41,7 +41,7 @@ onMounted(() => {
 <template>
   <section
     id="about"
-    class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300"
+    class="py-20 bg-white dark:bg-gray-800 bg-transparent transition-colors duration-300"
     v-gsap.whenVisible.from="{ opacity: 0, y: 60 }"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

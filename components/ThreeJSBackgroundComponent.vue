@@ -29,7 +29,9 @@ const particlePositions = new Float32Array(
 </script>
 
 <template>
-  <div class="fixed inset-0 w-full h-full z-[-1] pointer-events-none">
+  <div
+    class="fixed inset-0 w-full h-full z-[-1] pointer-events-none bg-transparent"
+  >
     <TresCanvas :window-size="true" :alpha="true">
       <TresPerspectiveCamera :position="[0, 0, 5]" />
       <TresAmbientLight :intensity="0.7" />

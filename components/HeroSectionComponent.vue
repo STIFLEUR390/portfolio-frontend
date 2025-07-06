@@ -1,7 +1,7 @@
 <template>
   <section
     id="hero"
-    class="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 sm:pt-32 bg-white dark:bg-gray-900 transition-colors duration-300"
+    class="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 sm:pt-32 bg-white dark:bg-gray-900 bg-transparent transition-colors duration-300"
   >
     <div class="text-center z-10 max-w-4xl mx-auto px-4">
       <!-- Photo de profil -->

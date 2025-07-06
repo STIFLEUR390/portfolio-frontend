@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-transparent">
     <div class="text-center mb-16">
       <h2
         class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
@@ -33,7 +33,7 @@
         </h3>
         <p class="text-gray-600 dark:text-gray-300 text-sm">
           Écoute active de vos besoins, analyse de vos objectifs et de votre
-          environnement pour poser les bases d’une solution sur-mesure.
+          environnement pour poser les bases d'une solution sur-mesure.
         </p>
       </div>
 
@@ -54,7 +54,7 @@
         </h3>
         <p class="text-gray-600 dark:text-gray-300 text-sm">
           Création de wireframes, maquettes UI/UX et prototypes interactifs pour
-          valider l’ergonomie et l’expérience utilisateur.
+          valider l'ergonomie et l'expérience utilisateur.
         </p>
       </div>
 

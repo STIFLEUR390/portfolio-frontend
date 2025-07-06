@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-24 sm:pt-32">
+  <div class="pt-24 sm:pt-32 bg-transparent">
     <div class="text-center z-10 max-w-4xl mx-auto px-4">
       <!-- Photo de profil -->
       <img
@@ -26,10 +26,10 @@
         <strong class="text-primary-600"
           >Développeur Full‑Stack, Designer & Automatisien IA</strong
         >
-        passionné par l’innovation digitale.<br />
-        J’accompagne entreprises et entrepreneurs dans la création
-        d’applications web performantes (Vue/Nuxt, Laravel), la conception de
-        maquettes UI/UX (Figma, Adobe XD, HTML/CSS) et l’automatisation
+        passionné par l'innovation digitale.<br />
+        J'accompagne entreprises et entrepreneurs dans la création
+        d'applications web performantes (Vue/Nuxt, Laravel), la conception de
+        maquettes UI/UX (Figma, Adobe XD, HTML/CSS) et l'automatisation
         intelligente de leurs workflows (n8n, Flowaise IA, API).<br />
         Mon objectif : transformer vos idées en solutions concrètes, intuitives
         et évolutives.
@@ -81,7 +81,7 @@
             0
           </div>
           <div class="text-gray-600 dark:text-gray-300">
-            Projets d’entreprise
+            Projets d'entreprise
           </div>
         </div>
         <div class="p-4">
